@@ -9,6 +9,11 @@ import { ShoppingComponent } from './components/shopping/shopping.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ShoppingListComponent } from './components/shopping/components/shopping-list/shopping-list.component';
 import { ShoppingEntryComponent } from './components/shopping/components/shopping-entry/shopping-entry.component';
+import { ShoppingService } from './services/shopping.service';
+import { CounterComponent } from './components/counter/counter.component';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from 'src/app/reducers';
 
 @NgModule({
   declarations: [
@@ -18,13 +23,16 @@ import { ShoppingEntryComponent } from './components/shopping/components/shoppin
     ShoppingComponent,
     NavComponent,
     ShoppingListComponent,
-    ShoppingEntryComponent
+    ShoppingEntryComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
-  providers: [],
+  providers: [ShoppingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
